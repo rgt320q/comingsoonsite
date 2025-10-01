@@ -44,9 +44,10 @@
 
         /* Dil Değiştirme Butonları */
         .lang-switcher {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
+            z-index: 1000;
         }
 
         .lang-switcher button {
@@ -95,11 +96,11 @@
         /* Ana Başlık (Fluid Typography) */
         h1 {
             font-family: 'Poppins', sans-serif;
-            font-weight: 900;
+            font-weight: 500;
             color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: clamp(2.5rem, 8vw, 4rem); 
+            font-size: clamp(1.8rem, 10vw, 4rem); 
             line-height: 1.1;
             margin-bottom: 1rem;
         }
