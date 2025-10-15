@@ -49,18 +49,22 @@ header .container {
     filter: brightness(0) invert(1); /* Logoyu beyaz yapar */
 }
 
-nav ul {
+nav.main-nav {
+    display: flex;
+}
+
+nav.main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-nav ul li {
+nav.main-nav ul li {
     margin-left: 30px;
 }
 
-nav ul li a {
+nav.main-nav ul li a {
     color: var(--color-white);
     text-decoration: none;
     font-weight: 600;
@@ -68,8 +72,12 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav.main-nav ul li a:hover {
     color: var(--color-turquoise); /* Vurgu rengi */
+}
+
+.language-selector.main-lang-selector {
+    display: block;
 }
 
 .language-selector select {
@@ -94,17 +102,28 @@ nav ul li a:hover {
     border-color: var(--color-turquoise);
 }
 
+.menu-toggle {
+    display: none; /* Hide on desktop */
+    font-size: 1.8em;
+    cursor: pointer;
+    color: var(--color-white);
+}
+
+.mobile-menu {
+    display: none; /* Hidden by default */
+}
+
 /* Hero Section */
 .hero-section {
     background: var(--color-black);
     color: var(--color-white);
     text-align: center;
-    padding: 100px 0; /* Padding azaltıldı */
+    padding: 10px 0; /* Adjusted for less space on desktop */
     display: flex;
     flex-direction: column; /* İçerikleri dikey hizalamak için */
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Tam ekran yüksekliği */
+    min-height: 90vh; /* Tam ekran yüksekliği */
     margin-top: 0; /* Header yüksekliği kadar boşluk kaldırıldı, padding ile ayarlanacak */
     overflow: hidden; /* Animasyonlar için */
     position: relative;
@@ -180,8 +199,8 @@ nav ul li a:hover {
 .hero-section h1,
 .hero-section p,
 .hero-section .btn {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0; /* Re-enabled for testing IntersectionObserver */
+    transform: translateY(30px); /* Re-enabled for testing IntersectionObserver */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -469,19 +488,83 @@ footer p {
 /* Responsive Tasarım */
 @media (max-width: 768px) {
     header .container {
+        flex-direction: row; /* Keep logo and toggle on same row */
+        justify-content: space-between; /* Space between logo and toggle */
+        align-items: center;
+    }
+
+    nav.main-nav,
+    .language-selector.main-lang-selector {
+        display: none; /* Hide desktop nav on mobile */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon on mobile */
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95); /* Dark overlay */
+        z-index: 999;
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease-in-out;
     }
 
-    nav ul {
-        margin-top: 15px;
+    .mobile-menu.is-open {
+        transform: translateX(0); /* Slide in */
     }
 
-    nav ul li {
-        margin: 0 10px;
+    .mobile-menu nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
-    .language-selector {
-        margin-top: 15px;
+    .mobile-menu nav ul li {
+        margin: 20px 0;
+    }
+
+    .mobile-menu nav ul li a {
+        color: var(--color-white);
+        text-decoration: none;
+        font-size: 1.8em;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-menu nav ul li a:hover {
+        color: var(--color-turquoise);
+    }
+
+    .mobile-menu .language-selector select {
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border: 1px solid var(--color-gray-dark);
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.3%203.2-16.1%208.1-3.8%204.9-4.6%2011-2.4%2017.4l133.7%20163.5c3.8%204.9%209.6%208.1%2016.1%208.1s12.3-3.2%2016.1-8.1L289.4%2094.7c2.2-6.4%201.4-12.5-2.4-17.4z%22%2F%3E%3C%2Fsvg%3E');
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-size: 15px auto;
+    }
+
+    .hero-section {
+        padding: 120px 0; /* Increased padding for mobile */
+        min-height: auto; /* Allow height to be determined by content */
     }
 
     .hero-section h1 {

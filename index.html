@@ -13,7 +13,7 @@
             <div class="logo">
                 <img src="logo.png" alt="mrCetin Software Logosu">
             </div>
-            <nav>
+            <nav class="main-nav">
                 <ul>
                     <li><a href="#applications" data-i18n="nav_applications">Uygulamalarımız</a></li>
                     <li><a href="#about-us" data-i18n="nav_about_us">Biz Kimiz</a></li>
@@ -22,7 +22,7 @@
                     <li><a href="#contact" data-i18n="nav_contact">İletişim</a></li>
                 </ul>
             </nav>
-            <div class="language-selector">
+            <div class="language-selector main-lang-selector">
                 <select id="language-select">
                     <option value="tr">Türkçe</option>
                     <option value="en">English</option>
@@ -35,8 +35,36 @@
                     <option value="ar">العربية</option>
                 </select>
             </div>
+            <div class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <nav>
+            <ul>
+                <li><a href="#applications" data-i18n="nav_applications">Uygulamalarımız</a></li>
+                <li><a href="#about-us" data-i18n="nav_about_us">Biz Kimiz</a></li>
+                <li><a href="#vision" data-i18n="nav_vision">Vizyon</a></li>
+                <li><a href="#mission" data-i18n="nav_mission">Misyon</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">İletişim</a></li>
+            </ul>
+        </nav>
+        <div class="language-selector">
+            <select id="mobile-language-select">
+                <option value="tr">Türkçe</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="ru">Русский</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="ko">한국어</option>
+                <option value="ar">العربية</option>
+            </select>
+        </div>
+    </div>
 
     <main>
         <section id="hero" class="hero-section">

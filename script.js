@@ -517,27 +517,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set default language on load (e.g., from browser or saved preference)
     const defaultLang = localStorage.getItem('selectedLanguage') || 'tr';
     const languageSelect = document.getElementById('language-select');
-    if (languageSelect) {
-        languageSelect.value = defaultLang;
-        setLanguage(defaultLang); // Sayfa yüklendiğinde varsayılan dili ayarla
+    const mobileLanguageSelect = document.getElementById('mobile-language-select');
 
-        languageSelect.addEventListener('change', (event) => {
-            const selectedLanguage = event.target.value;
-            localStorage.setItem('selectedLanguage', selectedLanguage);
-            setLanguage(selectedLanguage);
-        });
+    function initializeLanguageSelect(selectElement, initialLang) {
+        if (selectElement) {
+            selectElement.value = initialLang;
+            selectElement.addEventListener('change', (event) => {
+                const selectedLanguage = event.target.value;
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+                setLanguage(selectedLanguage);
+            });
+        }
     }
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+    initializeLanguageSelect(languageSelect, defaultLang);
+    initializeLanguageSelect(mobileLanguageSelect, defaultLang);
+    setLanguage(defaultLang); // Sayfa yüklendiğinde varsayılan dili ayarla
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+    // Function to adjust hero-section margin-top based on header height
+    function adjustHeroSectionMargin() {
+        const header = document.querySelector('header');
+        const heroSection = document.querySelector('.hero-section');
+        if (header && heroSection) {
+            heroSection.style.marginTop = header.offsetHeight + 'px';
+        }
+    }
+
+    // Adjust margin on load and resize
+    adjustHeroSectionMargin();
+    window.addEventListener('resize', adjustHeroSectionMargin);
+
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuIcon = mobileMenuToggle ? mobileMenuToggle.querySelector('i') : null; // Handle null case
+
+    if (mobileMenuToggle && mobileMenu && mobileMenuIcon) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('is-open');
+            if (mobileMenu.classList.contains('is-open')) {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-open');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+                document.body.style.overflow = '';
             });
         });
-    });
+    }
 
     // Example: Add a class to header on scroll for styling changes
     window.addEventListener('scroll', () => {
@@ -550,20 +588,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Scroll-triggered animations using Intersection Observer
-    const sections = document.querySelectorAll('.section, .hero-section'); // hero-section'ı da dahil et
+    const sections = document.querySelectorAll('.section, .hero-section');
 
-    const observerOptions = {
-        root: null, // viewport
-        rootMargin: '0px',
-        threshold: 0.1 // %10'u görünür olduğunda tetikle
-    };
-
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // %10'u görünür olduğunda tetikle
+            };
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
             } else {
-                entry.target.classList.remove('is-visible'); // Öğeler görünürlük alanından çıktığında sınıfı kaldır
+                entry.target.classList.remove('is-visible');
             }
         });
     }, observerOptions);
