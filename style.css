@@ -437,7 +437,7 @@ footer p {
 .modal-content {
     background-color: var(--color-white);
     margin: 10% auto; /* Üstten ve alttan boşluk, ortalanmış */
-    padding: 30px;
+    padding: 20px; /* Adjusted padding */
     border: 1px solid var(--color-gray-light);
     width: 80%; /* Genişlik */
     max-width: 700px;
@@ -458,6 +458,8 @@ footer p {
     text-align: left;
     font-size: 1em;
     line-height: 1.8;
+    word-wrap: break-word; /* Ensures long words break and wrap */
+    word-break: break-word; /* Ensures long words break and wrap */
 }
 
 .close-button {
@@ -591,6 +593,8 @@ footer p {
 
     .modal-content {
         width: 95%;
-        margin: 5% auto;
+        margin: 0 auto; /* Remove vertical margin */
+        max-height: 100vh; /* Limit height to viewport height */
+        overflow-y: auto; /* Enable vertical scrolling */
     }
 }
