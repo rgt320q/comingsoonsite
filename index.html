@@ -10,9 +10,11 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="mrCetin Software Logosu">
-            </div>
+            <a href="#" class="logo-link">
+                <div class="logo">
+                    <img src="logo.png" alt="mrCetin Software Logosu">
+                </div>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#applications" data-i18n="nav_applications">Uygulamalarımız</a></li>
@@ -27,13 +29,23 @@
                     <option value="tr">Türkçe</option>
                     <option value="en">English</option>
                     <option value="de">Deutsch</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
                     <option value="es">Español</option>
                     <option value="ru">Русский</option>
                     <option value="ja">日本語</option>
                     <option value="zh">中文</option>
                     <option value="ko">한국어</option>
-                    <option value="ar">العربية</option>
+                    <option value="ar">العربية</option>                    
                 </select>
+            </div>
+            <div class="theme-switch-wrapper">
+                <i class="fas fa-sun"></i>
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider"></span>
+                </label>
+                <i class="fas fa-moon"></i>
             </div>
             <div class="menu-toggle" id="mobile-menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -62,7 +74,17 @@
                 <option value="zh">中文</option>
                 <option value="ko">한국어</option>
                 <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
             </select>
+        </div>
+        <div class="theme-switch-wrapper mobile-theme-switch">
+            <i class="fas fa-sun"></i>
+            <label class="theme-switch" for="mobile-theme-toggle">
+                <input type="checkbox" id="mobile-theme-toggle" />
+                <span class="slider"></span>
+            </label>
+            <i class="fas fa-moon"></i>
         </div>
     </div>
 

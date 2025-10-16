@@ -473,6 +473,112 @@ const translations = {
         legal_notice_text: "يحتوي هذا الإشعار القانوني على معلومات قانونية وتفاصيل الشركة وبيانات حقوق الطبع والنشر لـ mrCetin Software. جميع المحتويات والنصوص والرسومات والشعارات والبرامج الموجودة على موقعنا الإلكتروني مملوكة لـ mrCetin Software أو مرخصة لها ومحمية بموجب قوانين حقوق الطبع والنشر. يحظر الاستنساخ أو التوزيع أو الاستخدام غير المصرح به. يتم توفير المعلومات الموجودة على موقعنا الإلكتروني بحسن نية، ولكن لا يوجد ضمان لدقتها أو اكتمالها. إذا كانت لديك أي أسئلة أو مخاوف قانونية، يرجى استشارة مستشار قانوني مؤهل.",
         sitemap_title: "خريطة الموقع",
         sitemap_text: "خريطة الموقع للوصول السريع إلى جميع صفحات موقع mrCetin Software. تتضمن الأقسام الرئيسية مثل الصفحة الرئيسية، تطبيقاتنا، من نحن، الرؤية، المهمة، اتصل بنا، سياسة الخصوصية، استخدام ملفات تعريف الارتباط، شروط الاستخدام، إشعار قانوني. تم تصميم هذه الخريطة لتسهيل التنقل في موقعنا الإلكتروني ومساعدتك في العثور على المعلومات التي تبحث عنها بسرعة أكبر. يرجى الاتصال بنا إذا كان أي رابط صفحة لا يعمل."
+    },
+    fr: {
+        page_title: "mrCetin Software - Conception d'applications mobiles et de jeux",
+        nav_applications: "Nos applications",
+        nav_about_us: "À propos de nous",
+        nav_vision: "Vision",
+        nav_mission: "Mission",
+        nav_contact: "Contact",
+        hero_title: "Expériences innovantes d'applications mobiles et de jeux",
+        hero_subtitle: "Donner vie à vos rêves dans le monde numérique.",
+        hero_button: "Découvrez nos projets",
+        applications_title: "Nos applications",
+        applications_text: "Vous trouverez ici des exemples de nos projets d'applications mobiles et de jeux.",
+        game_project_1_title: "Projet de jeu 1",
+        game_project_1_description: "Un jeu de formation professionnelle passionnant. En développement.",
+        game_project_2_title: "Projet de jeu 2",
+        game_project_2_description: "Une expérience de défi nostalgique. En développement.",
+        mobile_app_project_title: "Projet d'application mobile",
+        mobile_app_project_description: "Une application qui améliorera votre expérience de voyage et comblera les lacunes de votre itinéraire. Bientôt disponible.",
+        status_in_development: "En développement",
+        status_coming_soon: "Bientôt disponible",
+        about_us_title: "Qui nous sommes",
+        about_us_text_p1: "Nous sommes un studio de technologie et de communication qui fonctionne avec des principes de haute précision technique, de sécurité et de durabilité dans les processus de développement d'applications mobiles et de produits numériques.",
+        about_us_text_p2: "Nous adoptons une approche qui simplifie les infrastructures complexes, optimise les processus avec l'automatisation et présente chaque étape de manière documentée.",
+        about_us_text_p3: "Dans des composants critiques tels que l'architecture des applications, la sécurité des données, l'expérience utilisateur et l'infrastructure de communication ; nous développons des solutions axées à la fois sur l'ingénierie et la stratégie.",
+        about_us_text_p4: "Chaque projet est conçu non seulement pour être fonctionnel, mais aussi pour être intégré à l'identité de l'entreprise, adapté au succès à long terme et techniquement durable.",
+        about_us_text_p5: "Pour permettre aux marques de laisser une forte empreinte dans le monde numérique ; nous structurons professionnellement leurs infrastructures techniques et façonnons stratégiquement leurs langages de communication.",
+        about_us_text_p6: "Parce que nous ne sommes pas seulement des développeurs de produits numériques ; nous sommes des partenaires de solutions qui les transportent vers l'avenir, les guident et génèrent de la valeur.",
+        vision_title: "Vision",
+        vision_text: "Être un point de référence dans le monde numérique en construisant des infrastructures techniques pour les institutions de manière simple, sécurisée et évolutive, avec le principe d'excellence en matière de sécurité de l'information, de durabilité du système et de communication numérique. Avec des systèmes hautement structurés et des solutions de communication stratégiques, nous visons à créer un écosystème qui guide la technologie, assure le leadership et génère de la valeur.",
+        mission_title: "Mission",
+        mission_text: "Simplifier les processus technologiques complexes en proposant des solutions globales en matière de sécurité de la messagerie, d'intégration de certificats en chaîne, d'automatisation et de communication de marque. Dans chaque projet, nous agissons avec les principes de précision technique, de durabilité et de centrage sur l'utilisateur, permettant aux institutions de positionner leurs actifs numériques de manière sécurisée, professionnelle et efficace.",
+        contact_title: "Contact",
+        contact_text: "Contactez-nous et discutons de votre projet.",
+        contact_address: "Çekmeköy, Istanbul, Turquie",
+        contact_phone: "Téléphone : +90531-932 33 96",
+        contact_email: "E-mail : admin@mrcetin.com",
+        footer_privacy: "Politique de confidentialité",
+        footer_cookies: "Utilisation des cookies",
+        footer_terms: "Conditions d'utilisation",
+        footer_legal: "Légal",
+        footer_sitemap: "Plan du site",
+        footer_copyright: "© 2025 mrCetin Software. Tous droits réservés.",
+        privacy_policy_title: "Politique de confidentialité",
+        privacy_policy_text: "Cette politique de confidentialité explique comment mrCetin Software collecte, utilise, divulgue et protège vos données personnelles. En utilisant nos services, vous acceptez les pratiques décrites dans cette politique. La sécurité de vos données est importante pour nous, et nous prenons toutes les mesures nécessaires pour protéger vos données. Les données que nous collectons sont utilisées pour améliorer nos services, vous offrir une meilleure expérience et remplir nos obligations légales. Nous ne partageons pas vos données avec des tiers sans votre consentement, mais les exigences légales ou les collaborations avec nos fournisseurs de services peuvent constituer une exception. Pour plus d'informations sur vos droits en matière de confidentialité, veuillez nous contacter.",
+        cookie_policy_title: "Utilisation des cookies",
+        cookie_policy_text: "Notre site Web utilise des cookies pour améliorer votre expérience utilisateur et analyser nos services. Les cookies sont de petits fichiers texte stockés sur votre ordinateur par votre navigateur. Ces cookies nous aident à mémoriser vos préférences, à analyser le trafic du site et à vous fournir un contenu personnalisé. Vous pouvez contrôler et supprimer les cookies à tout moment via les paramètres de votre navigateur. Cependant, veuillez noter que certaines fonctionnalités de notre site Web могут ne pas fonctionner correctement si vous désactivez les cookies. Pour plus d'informations, veuillez consulter notre politique en matière de cookies.",
+        terms_of_use_title: "Conditions d'utilisation",
+        terms_of_use_text: "En utilisant le site Web de mrCetin Software, vous acceptez les conditions d'utilisation suivantes. Ces conditions comprennent des dispositions concernant l'utilisation de notre site Web, son contenu, les droits de propriété intellectuelle et les limitations de responsabilité. Le contenu de notre site Web est uniquement à des fins d'information générale et ne constitue pas un avis juridique. Vous êtes censé ne pas abuser de nos services, ne pas vous livrer à des activités illégales et respecter les droits des autres utilisateurs. En cas de violation de ces conditions, votre accès à nos services peut être restreint ou résilié. Veuillez lire attentivement ces conditions.",
+        legal_notice_title: "Mentions légales",
+        legal_notice_text: "Ces mentions légales contiennent des informations juridiques, les coordonnées de l'entreprise et les déclarations de droits d'auteur de mrCetin Software. Tout le contenu, les textes, les graphiques, les logos et les logiciels de notre site Web sont la propriété de mrCetin Software ou sous licence et sont protégés par les lois sur le droit d'auteur. Toute reproduction, distribution ou utilisation non autorisée est interdite. Les informations sur notre site Web sont fournies de bonne foi, mais aucune garantie n'est donnée quant à leur exactitude ou leur exhaustivité. Si vous avez des questions ou des préoccupations juridiques, veuillez consulter un conseiller juridique qualifié.",
+        sitemap_title: "Plan du site",
+        sitemap_text: "Plan du site pour un accès rapide à toutes les pages du site Web de mrCetin Software. Comprend les sections principales telles que l'accueil, nos applications, à propos de nous, la vision, la mission, le contact, la politique de confidentialité, l'utilisation des cookies, les conditions d'utilisation, les mentions légales. Cette carte est conçue pour faciliter votre navigation sur notre site Web et vous aider à trouver plus rapidement les informations que vous recherchez. Veuillez nous contacter si un lien de page ne fonctionne pas."
+    },
+    it: {
+        page_title: "mrCetin Software - Progettazione di app mobili e giochi",
+        nav_applications: "Le nostre applicazioni",
+        nav_about_us: "Chi siamo",
+        nav_vision: "Visione",
+        nav_mission: "Missione",
+        nav_contact: "Contatto",
+        hero_title: "Esperienze innovative di app mobili e giochi",
+        hero_subtitle: "Portare i tuoi sogni nel mondo digitale.",
+        hero_button: "Esplora i nostri progetti",
+        applications_title: "Le nostre applicazioni",
+        applications_text: "Qui troverai esempi dei nostri progetti di app mobili e giochi.",
+        game_project_1_title: "Progetto di gioco 1",
+        game_project_1_description: "Un entusiasmante gioco di formazione professionale. In sviluppo.",
+        game_project_2_title: "Progetto di gioco 2",
+        game_project_2_description: "Un'esperienza di sfida nostalgica. In sviluppo.",
+        mobile_app_project_title: "Progetto di app mobile",
+        mobile_app_project_description: "Un'applicazione che migliorerà la tua esperienza di viaggio e completerà le carenze del tuo percorso. Prossimamente.",
+        status_in_development: "In sviluppo",
+        status_coming_soon: "Prossimamente",
+        about_us_title: "Chi siamo",
+        about_us_text_p1: "Siamo uno studio di tecnologia e comunicazione che opera con principi di alta precisione tecnica, sicurezza e sostenibilità nei processi di sviluppo di applicazioni mobili e prodotti digitali.",
+        about_us_text_p2: "Adottiamo un approccio che semplifica le infrastrutture complesse, ottimizza i processi con l'automazione e presenta ogni passaggio in modo documentato.",
+        about_us_text_p3: "In componenti critici come l'architettura delle applicazioni, la sicurezza dei dati, l'esperienza dell'utente e l'infrastruttura di comunicazione; sviluppiamo soluzioni focalizzate sia sull'ingegneria che sulla strategia.",
+        about_us_text_p4: "Ogni progetto è progettato non solo per essere funzionale, ma anche per essere integrato nell'identità aziendale, adatto al successo a lungo termine e tecnicamente sostenibile.",
+        about_us_text_p5: "Per consentire ai marchi di lasciare un segno forte nel mondo digitale; strutturiamo professionalmente le loro infrastrutture tecniche e modelliamo strategicamente i loro linguaggi di comunicazione.",
+        about_us_text_p6: "Perché non siamo solo sviluppatori di prodotti digitali; siamo partner di soluzioni che li portano nel futuro, li guidano e generano valore.",
+        vision_title: "Visione",
+        vision_text: "Essere un punto di riferimento nel mondo digitale costruendo infrastrutture tecniche per le istituzioni in modo semplice, sicuro e scalabile, con il principio di eccellenza nella sicurezza delle informazioni, sostenibilità del sistema e comunicazione digitale. Con sistemi altamente strutturati e soluzioni di comunicazione strategiche, miriamo a creare un ecosistema che guida la tecnologia, fornisce leadership e genera valore.",
+        mission_title: "Missione",
+        mission_text: "Semplificare processi tecnologici complessi offrendo soluzioni olistiche in materia di sicurezza della posta elettronica, integrazione di certificati a catena, automazione e comunicazione del marchio. In ogni progetto, agiamo con i principi di accuratezza tecnica, sostenibilità e centralità dell'utente, consentendo alle istituzioni di posizionare i propri asset digitali in modo sicuro, professionale ed efficace.",
+        contact_title: "Contatto",
+        contact_text: "Contattaci e parliamo del tuo progetto.",
+        contact_address: "Çekmeköy, Istanbul, Turchia",
+        contact_phone: "Telefono: +90531-932 33 96",
+        contact_email: "E-mail: admin@mrcetin.com",
+        footer_privacy: "Politica sulla privacy",
+        footer_cookies: "Uso dei cookie",
+        footer_terms: "Condizioni d'uso",
+        footer_legal: "Legale",
+        footer_sitemap: "Mappa del sito",
+        footer_copyright: "© 2025 mrCetin Software. Tutti i diritti riservati.",
+        privacy_policy_title: "Politica sulla privacy",
+        privacy_policy_text: "Questa politica sulla privacy spiega come mrCetin Software raccoglie, utilizza, divulga e protegge i tuoi dati personali. Utilizzando i nostri servizi, accetti le pratiche descritte in questa politica. La sicurezza dei tuoi dati è importante per noi e adottiamo tutte le misure necessarie per proteggere i tuoi dati. I dati che raccogliamo vengono utilizzati per migliorare i nostri servizi, offrirti un'esperienza migliore e adempiere ai nostri obblighi legali. Non condividiamo i tuoi dati con terze parti senza il tuo consenso, ma i requisiti legali o le collaborazioni con i nostri fornitori di servizi possono costituire un'eccezione. Per ulteriori informazioni sui tuoi diritti sulla privacy, ti preghiamo di contattarci.",
+        cookie_policy_title: "Uso dei cookie",
+        cookie_policy_text: "Il nostro sito Web utilizza i cookie per migliorare la tua esperienza utente e analizzare i nostri servizi. I cookie sono piccoli file di testo memorizzati sul tuo computer dal tuo browser. Questi cookie ci aiutano a ricordare le tue preferenze, analizzare il traffico del sito e fornirti contenuti personalizzati. Puoi controllare ed eliminare i cookie in qualsiasi momento tramite le impostazioni del tuo browser. Tuttavia, tieni presente che alcune funzionalità del nostro sito Web potrebbero non funzionare correttamente se disabiliti i cookie. Per ulteriori informazioni, consulta la nostra politica sui cookie.",
+        terms_of_use_title: "Condizioni d'uso",
+        terms_of_use_text: "Utilizzando il sito Web di mrCetin Software, accetti i seguenti termini di utilizzo. Questi termini includono disposizioni relative all'uso del nostro sito Web, al suo contenuto, ai diritti di proprietà intellettuale e alle limitazioni di responsabilità. Il contenuto del nostro sito Web è solo a scopo informativo generale e non costituisce consulenza legale. Ci si aspetta che tu non abusi dei nostri servizi, non intraprenda attività illegali e rispetti i diritti degli altri utenti. In caso di violazione di questi termini, il tuo accesso ai nostri servizi potrebbe essere limitato o interrotto. Si prega di leggere attentamente questi termini.",
+        legal_notice_title: "Avviso legale",
+        legal_notice_text: "Questo avviso legale contiene informazioni legali, dettagli aziendali e dichiarazioni di copyright di mrCetin Software. Tutti i contenuti, testi, grafici, loghi e software sul nostro sito Web sono di proprietà o concessi in licenza a mrCetin Software e sono protetti dalle leggi sul copyright. È vietata la riproduzione, la distribuzione o l'uso non autorizzati. Le informazioni sul nostro sito Web sono fornite in buona fede, ma non viene fornita alcuna garanzia sulla loro accuratezza o completezza. In caso di domande o dubbi legali, consultare un consulente legale qualificato.",
+        sitemap_title: "Mappa del sito",
+        sitemap_text: "Mappa del sito per un rapido accesso a tutte le pagine del sito Web di mrCetin Software. Include sezioni principali come Home, Le nostre applicazioni, Chi siamo, Visione, Missione, Contatto, Politica sulla privacy, Uso dei cookie, Condizioni d'uso, Avviso legale. Questa mappa è progettata per facilitare la navigazione nel nostro sito Web e aiutarti a trovare più rapidamente le informazioni che stai cercando. Ti preghiamo di contattarci se un collegamento a una pagina non funziona."
     }
 };
 
@@ -631,4 +737,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // More advanced animations will be added here later
     // For example, using GSAP for more complex timeline-based animations.
+
+    // Theme Switcher Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const htmlEl = document.documentElement;
+
+    function setTheme(theme) {
+        htmlEl.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+
+    function toggleTheme() {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+        themeToggle.checked = newTheme === 'dark';
+        mobileThemeToggle.checked = newTheme === 'dark';
+    }
+
+    themeToggle.addEventListener('change', toggleTheme);
+    mobileThemeToggle.addEventListener('change', toggleTheme);
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    themeToggle.checked = savedTheme === 'dark';
+    mobileThemeToggle.checked = savedTheme === 'dark';
 });

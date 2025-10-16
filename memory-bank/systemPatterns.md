@@ -2,23 +2,24 @@
 
 ## System Architecture
 
-The website will be a static or dynamically generated site, primarily client-side rendered. It will focus on front-end technologies, with minimal or no backend services initially, unless specific features (e.g., contact forms requiring server-side processing) are introduced.
+The website is a static client-side rendered site built with plain HTML, CSS, and JavaScript. It does not require a backend, though one could be added for features like a contact form.
 
 ## Key Technical Decisions
 
-- **Frontend Framework/Library:** (To be decided, e.g., React, Vue, plain HTML/CSS/JS, or a static site generator like Next.js/Gatsby).
-- **Styling:** (To be decided, e.g., Tailwind CSS, Bootstrap, custom CSS-in-JS).
+- **Frontend Framework/Library:** Plain HTML, CSS, and JavaScript.
+- **Styling:** Custom CSS with a strong emphasis on CSS variables for theming and maintainability.
 - **Deployment:** Static hosting (e.g., Netlify, Vercel, GitHub Pages).
 
 ## Design Patterns in Use
 
-- **Component-Based Architecture:** If a framework like React or Vue is chosen, the site will be built using reusable components.
 - **Responsive Design Patterns:** Utilizing CSS media queries, flexible grids, and fluid images to ensure adaptability across devices.
+- **Themeable UI:** A theming system based on CSS variables and a `data-theme` attribute on the `<html>` element allows for easy switching between light and dark modes. All colors are defined as semantic variables (e.g., `--color-text-primary`, `--color-background-primary`).
+- **JavaScript-based Localization:** A single `translations` object in `script.js` holds all string translations, which are dynamically applied to the page based on user selection.
 
 ## Component Relationships
 
-- **Header/Navigation:** Global navigation, company logo.
-- **Hero Section:** Main introductory content, call to action.
+- **Header/Navigation:** Global navigation, company logo, language selector, theme switcher.
+- **Hero Section:** Main introductory content, animated logo, call to action.
 - **About Section:** Company history, mission, values.
 - **Services Section:** Detailed description of offerings.
 - **Portfolio Section:** Display of past projects.
@@ -30,4 +31,4 @@ The website will be a static or dynamically generated site, primarily client-sid
 
 - **Responsive Layout Implementation:** Ensuring the design adapts flawlessly to various screen sizes.
 - **Portfolio Display:** Efficiently showcasing project details and images.
-- **Contact Form Functionality:** If implemented, ensuring reliable submission and data handling.
+- **Theming and Localization:** Ensuring all components and text are correctly displayed in all themes and languages.

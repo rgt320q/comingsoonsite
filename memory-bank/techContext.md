@@ -2,8 +2,9 @@
 
 ## Technologies Used
 
-- **Frontend:** HTML5, CSS3, JavaScript (Specific framework/library to be decided).
-- **Styling:** (To be decided, e.g., Bootstrap, Tailwind CSS, SASS/LESS, or plain CSS).
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+).
+- **Styling:** Plain CSS, with extensive use of CSS Variables for theming.
+- **Dependencies:** Font Awesome for icons.
 - **Deployment:** Static hosting platform (e.g., Netlify, Vercel, GitHub Pages).
 
 ## Development Setup
@@ -18,13 +19,8 @@
 - **Responsiveness:** Must be fully responsive across all major devices and screen sizes.
 - **Browser Compatibility:** Support for modern browsers.
 
-## Dependencies
-
-- (To be determined based on chosen framework/libraries, e.g., React, Vue, jQuery, Bootstrap, etc.)
-
 ## Tool Usage Patterns
 
 - **Code Editor:** VS Code for development.
-- **Browser Developer Tools:** For debugging and responsive design testing.
+- **Browser Developer Tools:** For debugging, responsive design testing, and performance analysis.
 - **Git Commands:** For version control (commit, push, pull, branch).
-- **(If applicable) Build Tools:** Webpack, Parcel, or similar for bundling and optimization.
