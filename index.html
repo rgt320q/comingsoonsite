@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">mrCetin Software - Mobil Uygulama ve Oyun Tasarımı</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo-link">
+                <div class="logo">
+                    <img src="logo.png" alt="mrCetin Software Logosu">
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#applications" data-i18n="nav_applications">Uygulamalarımız</a></li>
+                    <li><a href="#about-us" data-i18n="nav_about_us">Biz Kimiz</a></li>
+                    <li><a href="#vision" data-i18n="nav_vision">Vizyon</a></li>
+                    <li><a href="#mission" data-i18n="nav_mission">Misyon</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">İletişim</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector main-lang-selector">
+                <select id="language-select">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
+                    <option value="es">Español</option>
+                    <option value="ru">Русский</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="ko">한국어</option>
+                    <option value="ar">العربية</option>                    
+                </select>
+            </div>
+            <div class="theme-switch-wrapper">
+                <i class="fas fa-sun"></i>
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <nav>
+            <ul>
+                <li><a href="#applications" data-i18n="nav_applications">Uygulamalarımız</a></li>
+                <li><a href="#about-us" data-i18n="nav_about_us">Biz Kimiz</a></li>
+                <li><a href="#vision" data-i18n="nav_vision">Vizyon</a></li>
+                <li><a href="#mission" data-i18n="nav_mission">Misyon</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">İletişim</a></li>
+            </ul>
+        </nav>
+        <div class="language-selector">
+            <select id="mobile-language-select">
+                <option value="tr">Türkçe</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="ru">Русский</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="ko">한국어</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+            </select>
+        </div>
+        <div class="theme-switch-wrapper mobile-theme-switch">
+            <i class="fas fa-sun"></i>
+            <label class="theme-switch" for="mobile-theme-toggle">
+                <input type="checkbox" id="mobile-theme-toggle" />
+                <span class="slider"></span>
+            </label>
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-animated-logo">
+                    <img src="logo.png" alt="mrCetin Software Animasyonlu Logo">
+                </div>
+                <h1 data-i18n="hero_title">Yenilikçi Mobil Uygulama ve Oyun Deneyimleri.</h1>
+                <p data-i18n="hero_subtitle">Hayallerinizi dijital dünyaya taşıyoruz.</p>
+                <a href="#applications" class="btn" data-i18n="hero_button">Projelerimizi Keşfedin</a>
+            </div>
+        </section>
+
+        <section id="applications" class="section">
+            <div class="container">
+                <h2 data-i18n="applications_title">Uygulamalarımız</h2>
+                <p data-i18n="applications_text">Burada mobil uygulama ve oyun projelerimizden örnekler yer alacak.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 data-i18n="game_project_1_title">Oyun Projesi 1</h3>
+                        <p data-i18n="game_project_1_description">Heyecan verici bir mesleki eğitim oyunu. Geliştirme aşamasında.</p>
+                        <span class="status" data-i18n="status_in_development">Geliştirme Aşamasında</span>
+                    </div>
+                    <div class="project-card">
+                        <h3 data-i18n="game_project_2_title">Oyun Projesi 2</h3>
+                        <p data-i18n="game_project_2_description">Nostaljik bir mücadele deneyimi. Geliştirme aşamasında.</p>
+                        <span class="status" data-i18n="status_in_development">Geliştirme Aşamasında</span>
+                    </div>
+                    <div class="project-card">
+                        <h3 data-i18n="mobile_app_project_title">Mobil Uygulama Projesi</h3>
+                        <p data-i18n="mobile_app_project_description">Gezi deneyimizi geliştirecek ve rotanız için eksikliklerinizi tamamlayacak bir uygulama. Yakında kullanıma sunulacaktır.</p>
+                        <span class="status" data-i18n="status_coming_soon">Yakında Kullanıma Sunulacaktır</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us" class="section">
+            <div class="container">
+                <h2 data-i18n="about_us_title">Biz Kimiz</h2>
+                <p data-i18n="about_us_text_p1">Mobil uygulama ve dijital ürün geliştirme süreçlerinde; yüksek teknik doğruluk, güvenlik ve sürdürülebilirlik ilkeleriyle hareket eden bir teknoloji ve iletişim stüdyosuyuz.</p>
+                <p data-i18n="about_us_text_p2">Karmaşık altyapıları sadeleştiren, süreçleri otomasyonla optimize eden ve her adımı belgelenmiş biçimde sunan bir yaklaşım benimsiyoruz.</p>
+                <p data-i18n="about_us_text_p3">Uygulama mimarisi, veri güvenliği, kullanıcı deneyimi ve iletişim altyapısı gibi kritik bileşenlerde; hem mühendislik hem de strateji odaklı çözümler geliştiriyoruz.</p>
+                <p data-i18n="about_us_text_p4">Her proje, sadece işlevsel değil; aynı zamanda kurumsal kimliğe entegre, uzun vadeli başarıya uygun ve teknik olarak sürdürülebilir olacak şekilde tasarlanır.</p>
+                <p data-i18n="about_us_text_p5">Markaların dijital dünyada güçlü bir iz bırakabilmesi için; teknik altyapılarını profesyonelce yapılandırıyor, iletişim dillerini stratejik biçimde şekillendiriyoruz.</p>
+                <p data-i18n="about_us_text_p6">Çünkü biz, dijital ürünlerin yalnızca geliştiricisi değil; onları geleceğe taşıyan, rehberlik eden ve değer üreten bir çözüm ortağıyız.</p>
+            </div>
+        </section>
+
+        <section id="vision" class="section">
+            <div class="container">
+                <h2 data-i18n="vision_title">Vizyon</h2>
+                <p data-i18n="vision_text">Bilgi güvenliği, sistem sürdürülebilirliği ve dijital iletişimde mükemmeliyet ilkesiyle; kurumların teknik altyapılarını sade, güvenli ve ölçeklenebilir biçimde inşa ederek dijital dünyada iz bırakan bir referans noktası olmak. Yüksek doğrulukla yapılandırılmış sistemler ve stratejik iletişim çözümleriyle; teknolojiye yön veren, rehberlik eden ve değer üreten bir ekosistem oluşturmayı hedefliyoruz.</p>
+            </div>
+        </section>
+
+        <section id="mission" class="section">
+            <div class="container">
+                <h2 data-i18n="mission_title">Misyon</h2>
+                <p data-i18n="mission_text">Karmaşık teknolojik süreçleri sadeleştirerek; e-posta güvenliği, zincirli sertifika entegrasyonu, otomasyon ve marka iletişimi alanlarında bütüncül çözümler sunmak. Her projede teknik doğruluk, sürdürülebilirlik ve kullanıcı odaklılık ilkeleriyle hareket ederek; kurumların dijital varlıklarını güvenli, profesyonel ve etkili biçimde konumlandırmalarını sağlıyoruz.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 data-i18n="contact_title">İletişim</h2>
+                <p data-i18n="contact_text">Bize ulaşın ve projenizi konuşalım.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact_address">Çekmeköy, İstanbul, Türkiye</span></p>
+                    <p><a href="tel:+905319323396"><i class="fas fa-phone"></i> <span data-i18n="contact_phone">+90531-932 33 96</span></a></p>
+                    <p><a href="mailto:admin@mrcetin.com"><i class="fas fa-envelope"></i> <span data-i18n="contact_email">admin@mrcetin.com</span></a></p>
+                    <p><a href="https://github.com/mrcetincom" target="_blank"><i class="fab fa-github"></i> <span data-i18n="contact_github">GitHub</span></a></p>
+                </div>
+                <!-- İletişim formu veya bilgileri buraya gelecek -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#privacy-policy" class="modal-trigger" data-i18n="footer_privacy">Gizlilik Politikası</a>
+                <a href="#cookie-policy" class="modal-trigger" data-i18n="footer_cookies">Çerezlerin Kullanımı</a>
+                <a href="#terms-of-use" class="modal-trigger" data-i18n="footer_terms">Kullanım Şartları</a>
+                <a href="#legal-notice" class="modal-trigger" data-i18n="footer_legal">Yasal</a>
+                <a href="#sitemap" class="modal-trigger" data-i18n="footer_sitemap">Site Haritası</a>
+            </div>
+            <p data-i18n="footer_copyright">&copy; 2025 mrCetin Tech. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Modals for Legal Content -->
+    <div id="privacy-policy" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 data-i18n="privacy_policy_title">Gizlilik Politikası</h2>
+            <p data-i18n="privacy_policy_text">Bu gizlilik politikası, mrCetin Software'in kişisel verilerinizi nasıl topladığını, kullandığını, ifşa ettiğini ve koruduğunu açıklar. Hizmetlerimizi kullanarak, bu politikada açıklanan uygulamaları kabul etmiş olursunuz. Veri güvenliğiniz bizim için önemlidir ve verilerinizi korumak için gerekli tüm önlemleri alıyoruz. Topladığımız veriler, hizmetlerimizi iyileştirmek, size daha iyi bir deneyim sunmak ve yasal yükümlülüklerimizi yerine getirmek amacıyla kullanılır. Verilerinizi üçüncü taraflarla izniniz olmadan paylaşmayız, ancak yasal gereklilikler veya hizmet sağlayıcılarımızla işbirliği durumları istisna teşkil edebilir. Gizlilik haklarınızla ilgili daha fazla bilgi için lütfen bizimle iletişime geçin.</p>
+        </div>
+    </div>
+
+    <div id="cookie-policy" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 data-i18n="cookie_policy_title">Çerezlerin Kullanımı</h2>
+            <p data-i18n="cookie_policy_text">Web sitemiz, kullanıcı deneyiminizi geliştirmek ve hizmetlerimizi analiz etmek için çerezler kullanır. Çerezler, tarayıcınız tarafından bilgisayarınızda depolanan küçük metin dosyalarıdır. Bu çerezler, tercihlerinizi hatırlamamıza, site trafiğini analiz etmemize ve size kişiselleştirilmiş içerik sunmamıza yardımcı olur. Çerezleri istediğiniz zaman tarayıcı ayarlarınızdan kontrol edebilir ve silebilirsiniz. Ancak, çerezleri devre dışı bırakmanız durumunda web sitemizin bazı özelliklerinin düzgün çalışmayabileceğini lütfen unutmayın. Daha fazla bilgi için çerez politikamızı inceleyebilirsiniz.</p>
+        </div>
+    </div>
+
+    <div id="terms-of-use" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 data-i18n="terms_of_use_title">Kullanım Şartları</h2>
+            <p data-i18n="terms_of_use_text">mrCetin Software web sitesini kullanarak, aşağıdaki kullanım şartlarını kabul etmiş olursunuz. Bu şartlar, web sitemizin kullanımı, içeriği, fikri mülkiyet hakları ve sorumluluk sınırlamaları ile ilgili hükümler içerir. Web sitemizdeki içerikler yalnızca genel bilgi amaçlıdır ve herhangi bir yasal tavsiye niteliği taşımaz. Hizmetlerimizi kötüye kullanmamanız, yasa dışı faaliyetlerde bulunmamanız ve diğer kullanıcıların haklarına saygı göstermeniz beklenir. Bu şartları ihlal etmeniz durumunda, hizmetlerimize erişiminiz kısıtlanabilir veya sonlandırılabilir. Lütfen bu şartları dikkatlice okuyunuz.</p>
+        </div>
+    </div>
+
+    <div id="legal-notice" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 data-i18n="legal_notice_title">Yasal Bildirim</h2>
+            <p data-i18n="legal_notice_text">Bu yasal bildirim, mrCetin Software'in yasal bilgilerini, şirket detaylarını ve telif hakkı beyanlarını içerir. Web sitemizdeki tüm içerikler, metinler, grafikler, logolar ve yazılımlar mrCetin Software'e aittir veya lisanslıdır ve telif hakkı yasalarıyla korunmaktadır. İzinsiz çoğaltma, dağıtım veya kullanım yasaktır. Web sitemizde yer alan bilgiler iyi niyetle sunulmuştur, ancak doğruluğu veya eksiksizliği konusunda garanti verilmez. Herhangi bir yasal sorunuz veya endişeniz varsa, lütfen yetkili bir hukuk danışmanına başvurunuz.</p>
+        </div>
+    </div>
+
+    <div id="sitemap" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 data-i18n="sitemap_title">Site Haritası</h2>
+            <p data-i18n="sitemap_text">mrCetin Software web sitesinin tüm sayfalarına hızlı erişim için site haritası. Ana Sayfa, Uygulamalarımız, Biz Kimiz, Vizyon, Misyon, İletişim, Gizlilik Politikası, Çerezlerin Kullanımı, Kullanım Şartları, Yasal Bildirim gibi ana bölümleri içerir. Bu harita, web sitemizde gezinmenizi kolaylaştırmak ve aradığınız bilgilere daha hızlı ulaşmanızı sağlamak amacıyla hazırlanmıştır. Herhangi bir sayfa bağlantısının çalışmaması durumunda lütfen bizimle iletişime geçin.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
