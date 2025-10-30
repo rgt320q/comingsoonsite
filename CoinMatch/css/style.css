@@ -1,0 +1,327 @@
+body {
+            font-family: 'Inter', sans-serif;
+            /* touch-action: none; - Bu satır kaldırıldı, sayfa kaydırmasına izin veriyor */
+        }
+        canvas {
+            border-radius: 0.5rem;
+            /* touch-action: none; - Bu satır kaldırıldı. Artık JS ile kontrol ediliyor. */
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hidden {
+            display: none;
+        }
+        body.scrolling-disabled {
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-20px);
+          }
+          60% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .bouncing-letter {
+          display: inline-block;
+          animation: bounce 2s ease-in-out;
+        }
+
+.animated-goal-letter {
+    display: inline-block; /* Allows transform to work */
+    animation: goal-bounce 0.8s infinite alternate; /* Adjust timing as needed */
+    font-size: 3rem !important; /* Make it larger and force it */
+    color: #FFD700 !important; /* Specific gold color and force it */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Slightly stronger shadow */
+    font-weight: bold;
+    margin: 0 2px; /* Add some spacing between letters */
+}
+
+@keyframes goal-bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Foul Animations */
+
+/* Collision Foul - Two coins colliding */
+@keyframes collision-left {
+    0% { transform: translateX(-60px) scale(1); }
+    45% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(0) scale(1.15); }
+    55% { transform: translateX(-5px) scale(1); }
+    100% { transform: translateX(-60px) scale(1); }
+}
+
+@keyframes collision-right {
+    0% { transform: translateX(60px) scale(1); }
+    45% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(0) scale(1.15); }
+    55% { transform: translateX(5px) scale(1); }
+    100% { transform: translateX(60px) scale(1); }
+}
+
+@keyframes impact-flash {
+    0%, 45%, 60%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.8); }
+}
+
+.collision-animation {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
+}
+
+.collision-animation::before {
+    content: '💥';
+    position: absolute;
+    font-size: 3.5rem;
+    animation: impact-flash 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.9));
+    z-index: 2;
+}
+
+.collision-coin-left {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.8);
+    animation: collision-left 1.4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+.collision-coin-right {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b87333 0%, #cd853f 50%, #b87333 100%);
+    box-shadow: 0 4px 20px rgba(184, 115, 51, 0.8);
+    animation: collision-right 1.4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fall Foul - Coin falling off table */
+@keyframes coin-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(35px) rotate(180deg); opacity: 0.7; }
+    100% { transform: translateY(70px) rotate(360deg); opacity: 0; }
+}
+
+.fall-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    gap: 15px;
+}
+
+.fall-coin {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: coin-fall 1.5s ease-in infinite;
+}
+
+.fall-table-edge {
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #8b4513 0%, #a0522d 50%, #8b4513 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 5px;
+}
+
+/* Direct Goal Foul - Coin shooting straight to goal */
+@keyframes direct-shoot {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    80% { transform: translateY(-65px) scale(1); opacity: 1; }
+    90% { transform: translateY(-65px) scale(0.8); opacity: 0.7; }
+    100% { transform: translateY(-65px) scale(0.6); opacity: 0; }
+}
+
+.direct-goal-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    gap: 0;
+}
+
+.direct-coin {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: direct-shoot 1.2s ease-in infinite;
+    position: absolute;
+    bottom: 0;
+}
+
+.goal-net {
+    width: 100px;
+    height: 35px;
+    border: 3px solid #fff;
+    border-top: none;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.goal-net::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.4) 8px, rgba(255,255,255,0.4) 10px),
+        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.4) 8px, rgba(255,255,255,0.4) 10px);
+}
+
+/* Path Foul - Coin needs to go between two coins */
+@keyframes path-cross {
+    0% { transform: translateY(60px) scale(1); }
+    40% { transform: translateY(10px) scale(1); }
+    50% { transform: translateY(10px) scale(1.1); }
+    60% { transform: translateY(20px) scale(1) rotate(-10deg); }
+    100% { transform: translateY(60px) scale(1) rotate(0deg); }
+}
+
+@keyframes path-block-shake {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.path-animation {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100px;
+    position: relative;
+}
+
+.path-coin-moving {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: path-cross 1.6s ease-in-out infinite;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 10;
+}
+
+.path-coin-static {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5);
+    animation: path-block-shake 1.6s ease-in-out infinite;
+}
+
+.path-coin-static:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.path-coin-static:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.path-coins-pair {
+    display: flex;
+    gap: 70px;
+    z-index: 5;
+    position: relative;
+}
+
+/* All Coins Foul - Scattered coins */
+@keyframes float-coin {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.all-coins-animation {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.all-coins-animation .coin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: float-coin 1.5s ease-in-out infinite;
+}
+
+.all-coins-animation .coin:nth-child(1) {
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    animation-delay: 0s;
+}
+
+.all-coins-animation .coin:nth-child(2) {
+    background: linear-gradient(135deg, #b87333 0%, #cd853f 50%, #b87333 100%);
+    animation-delay: 0.2s;
+}
+
+.all-coins-animation .coin:nth-child(3) {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    animation-delay: 0.4s;
+}
+
+/* Chat notification shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}

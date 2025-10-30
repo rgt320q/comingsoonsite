@@ -1,0 +1,67 @@
+{
+  "rules": {
+    "games": {
+      ".read": "auth != null",
+      "$gameId": {
+        ".read": "auth != null",
+        ".write": "auth != null && (!data.exists() || root.child('games/' + $gameId + '/players/' + auth.uid).exists() || root.child('users/' + auth.uid + '/isAdmin').val() === true)",
+        ".validate": "newData.exists() || (data.exists() && (root.child('games/' + $gameId + '/players/' + auth.uid).exists() || root.child('users/' + auth.uid + '/isAdmin').val() === true))",
+        "players": {
+          "$uid": {
+            ".write": "auth != null && (!data.exists() || auth.uid === $uid)",
+            ".read": "auth != null"
+          }
+        },
+        "presence": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid",
+            ".read": "auth != null"
+          }
+        },
+        "gameState": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "activeFlick": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "acknowledgedTurn": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "chat": {
+          "$messageId": {
+            ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+            ".read": "auth != null",
+            ".validate": "newData.hasChildren(['uid', 'senderName', 'text', 'timestamp']) && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length <= 200"
+          }
+        },
+        "host": {
+          ".write": "auth != null && !data.exists()"
+        },
+        "status": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "endReason": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "disconnectedPlayer": {
+          ".write": "auth != null && root.child('games/' + $gameId + '/players/' + auth.uid).exists()",
+          ".read": "auth != null"
+        },
+        "createdAt": {
+          ".write": "auth != null && !data.exists()"
+        }
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}
