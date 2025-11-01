@@ -1,0 +1,1253 @@
+body {
+            font-family: 'Inter', sans-serif;
+            /* touch-action: none; - Bu satır kaldırıldı, sayfa kaydırmasına izin veriyor */
+        }
+        canvas {
+            border-radius: 0.5rem;
+            /* touch-action: none; - Bu satır kaldırıldı. Artık JS ile kontrol ediliyor. */
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hidden {
+            display: none;
+        }
+        body.scrolling-disabled {
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-20px);
+          }
+          60% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .bouncing-letter {
+          display: inline-block;
+          animation: bounce 2s ease-in-out;
+        }
+
+.animated-goal-letter {
+    display: inline-block; /* Allows transform to work */
+    animation: goal-bounce 0.8s infinite alternate; /* Adjust timing as needed */
+    font-size: 3rem !important; /* Make it larger and force it */
+    color: #FFD700 !important; /* Specific gold color and force it */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Slightly stronger shadow */
+    font-weight: bold;
+    margin: 0 2px; /* Add some spacing between letters */
+}
+
+@keyframes goal-bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Foul Animations */
+
+/* Collision Foul - Two coins colliding */
+@keyframes collision-left {
+    0% { transform: translateX(-60px) scale(1); }
+    45% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(0) scale(1.15); }
+    55% { transform: translateX(-5px) scale(1); }
+    100% { transform: translateX(-60px) scale(1); }
+}
+
+@keyframes collision-right {
+    0% { transform: translateX(60px) scale(1); }
+    45% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(0) scale(1.15); }
+    55% { transform: translateX(5px) scale(1); }
+    100% { transform: translateX(60px) scale(1); }
+}
+
+@keyframes impact-flash {
+    0%, 45%, 60%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.8); }
+}
+
+.collision-animation {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
+}
+
+.collision-animation::before {
+    content: '💥';
+    position: absolute;
+    font-size: 3.5rem;
+    animation: impact-flash 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.9));
+    z-index: 2;
+}
+
+.collision-coin-left {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.8);
+    animation: collision-left 1.4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+.collision-coin-right {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b87333 0%, #cd853f 50%, #b87333 100%);
+    box-shadow: 0 4px 20px rgba(184, 115, 51, 0.8);
+    animation: collision-right 1.4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fall Foul - Coin falling off table */
+@keyframes coin-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(35px) rotate(180deg); opacity: 0.7; }
+    100% { transform: translateY(70px) rotate(360deg); opacity: 0; }
+}
+
+.fall-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    gap: 15px;
+}
+
+.fall-coin {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: coin-fall 1.5s ease-in infinite;
+}
+
+.fall-table-edge {
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #8b4513 0%, #a0522d 50%, #8b4513 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 5px;
+}
+
+/* Direct Goal Foul - Coin shooting straight to goal */
+@keyframes direct-shoot {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    80% { transform: translateY(-65px) scale(1); opacity: 1; }
+    90% { transform: translateY(-65px) scale(0.8); opacity: 0.7; }
+    100% { transform: translateY(-65px) scale(0.6); opacity: 0; }
+}
+
+.direct-goal-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    gap: 0;
+}
+
+.direct-coin {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: direct-shoot 1.2s ease-in infinite;
+    position: absolute;
+    bottom: 0;
+}
+
+.goal-net {
+    width: 100px;
+    height: 35px;
+    border: 3px solid #fff;
+    border-top: none;
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.goal-net::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.4) 8px, rgba(255,255,255,0.4) 10px),
+        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.4) 8px, rgba(255,255,255,0.4) 10px);
+}
+
+/* Path Foul - Coin needs to go between two coins */
+@keyframes path-cross {
+    0% { transform: translateY(60px) scale(1); }
+    40% { transform: translateY(10px) scale(1); }
+    50% { transform: translateY(10px) scale(1.1); }
+    60% { transform: translateY(20px) scale(1) rotate(-10deg); }
+    100% { transform: translateY(60px) scale(1) rotate(0deg); }
+}
+
+@keyframes path-block-shake {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.path-animation {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100px;
+    position: relative;
+}
+
+.path-coin-moving {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    box-shadow: 0 4px 10px rgba(192, 192, 192, 0.5);
+    animation: path-cross 1.6s ease-in-out infinite;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 10;
+}
+
+.path-coin-static {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5);
+    animation: path-block-shake 1.6s ease-in-out infinite;
+}
+
+.path-coin-static:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.path-coin-static:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.path-coins-pair {
+    display: flex;
+    gap: 70px;
+    z-index: 5;
+    position: relative;
+}
+
+/* All Coins Foul - Scattered coins */
+@keyframes float-coin {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.all-coins-animation {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.all-coins-animation .coin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: float-coin 1.5s ease-in-out infinite;
+}
+
+.all-coins-animation .coin:nth-child(1) {
+    background: linear-gradient(135deg, #c0c0c0 0%, #f0f0f0 50%, #c0c0c0 100%);
+    animation-delay: 0s;
+}
+
+.all-coins-animation .coin:nth-child(2) {
+    background: linear-gradient(135deg, #b87333 0%, #cd853f 50%, #b87333 100%);
+    animation-delay: 0.2s;
+}
+
+.all-coins-animation .coin:nth-child(3) {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    animation-delay: 0.4s;
+}
+
+/* Chat notification shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Epic Goal Celebration Animations */
+@keyframes goal-flash {
+    0% { background: rgba(0, 0, 0, 0.85); }
+    50% { background: rgba(255, 215, 0, 0.3); }
+    100% { background: rgba(0, 0, 0, 0.85); }
+}
+
+.goal-celebration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.goal-trophy {
+    position: absolute;
+    font-size: 8rem;
+    animation: trophy-bounce 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes trophy-bounce {
+    0%, 100% { 
+        transform: translateY(0) scale(1) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-30px) scale(1.1) rotate(-5deg); 
+    }
+    50% { 
+        transform: translateY(0) scale(1.15) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-15px) scale(1.05) rotate(5deg); 
+    }
+}
+
+.goal-stars {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goal-star {
+    position: absolute;
+    font-size: 3rem;
+    animation: star-orbit 3s ease-in-out infinite;
+    animation-delay: var(--delay);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes star-orbit {
+    0% { 
+        transform: rotate(0deg) translateX(150px) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: rotate(36deg) translateX(150px) rotate(-36deg) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: rotate(324deg) translateX(150px) rotate(-324deg) scale(1);
+    }
+    100% { 
+        transform: rotate(360deg) translateX(150px) rotate(-360deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.goal-star:nth-child(1) { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+.goal-star:nth-child(2) { transform: rotate(72deg) translateX(150px) rotate(-72deg); }
+.goal-star:nth-child(3) { transform: rotate(144deg) translateX(150px) rotate(-144deg); }
+.goal-star:nth-child(4) { transform: rotate(216deg) translateX(150px) rotate(-216deg); }
+.goal-star:nth-child(5) { transform: rotate(288deg) translateX(150px) rotate(-288deg); }
+
+.goal-soccer-ball {
+    position: absolute;
+    font-size: 6rem;
+    animation: ball-spin 2s linear infinite, ball-bounce 1s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+    top: -100px;
+}
+
+@keyframes ball-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes ball-bounce {
+    0%, 100% { top: -100px; }
+    50% { top: -150px; }
+}
+
+.goal-confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--color);
+    top: -20px;
+    left: calc(50% + (var(--i) - 10) * 30px);
+    animation: confetti-fall 3s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+    opacity: 0;
+    border-radius: 2px;
+}
+
+@keyframes confetti-fall {
+    0% {
+        top: -20px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(calc((var(--i) - 10) * 20px)) rotate(720deg);
+    }
+}
+
+/* Enhanced animated goal letters */
+.animated-goal-letter {
+    display: inline-block;
+    animation: goal-letter-bounce 1s ease-in-out infinite;
+    font-size: 4rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)) 
+            drop-shadow(0 0 20px rgba(255, 165, 0, 0.6));
+    animation: goal-letter-bounce 0.6s ease-in-out infinite, 
+               gradient-shift 2s ease infinite;
+}
+
+.animated-goal-letter:nth-child(1) { animation-delay: 0s; }
+.animated-goal-letter:nth-child(2) { animation-delay: 0.1s; }
+.animated-goal-letter:nth-child(3) { animation-delay: 0.2s; }
+.animated-goal-letter:nth-child(4) { animation-delay: 0.3s; }
+.animated-goal-letter:nth-child(5) { animation-delay: 0.4s; }
+.animated-goal-letter:nth-child(6) { animation-delay: 0.5s; }
+
+@keyframes goal-letter-bounce {
+    0%, 100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2) rotate(5deg);
+    }
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Coin-Themed Goal Animations - Football Goal Focus */
+.coin-goal-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Football Goal Structure */
+.soccer-goal {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 180px;
+    perspective: 1000px;
+}
+
+.soccer-goal.big {
+    width: 350px;
+    height: 200px;
+}
+
+.soccer-goal.large {
+    width: 380px;
+    height: 220px;
+}
+
+.goal-post-left, .goal-post-right {
+    position: absolute;
+    width: 12px;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff, #e0e0e0, #ffffff);
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        inset -2px 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.goal-post-left {
+    left: 0;
+    animation: goal-entrance 0.5s ease-out;
+}
+
+.goal-post-right {
+    right: 0;
+    animation: goal-entrance 0.5s ease-out;
+}
+
+@keyframes goal-entrance {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.goal-crossbar {
+    position: absolute;
+    width: 100%;
+    height: 12px;
+    top: 0;
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0, #ffffff);
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    animation: crossbar-entrance 0.5s ease-out;
+}
+
+@keyframes crossbar-entrance {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.goal-back-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 50, 0, 0.6) 0%, rgba(0, 80, 0, 0.4) 50%, rgba(0, 100, 0, 0.2) 100%);
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.goal-net-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+.net-horizontal {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    top: calc(var(--i) * 12.5%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.net-vertical {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    left: calc(var(--i) * 8.33%);
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation Type 1: Direct Shot - Coin flies straight into goal center */
+.coin-goal-type-1 .goal-net-pattern {
+    animation: net-ripple 0.6s ease-out;
+    animation-delay: 0.8s;
+}
+
+@keyframes net-ripple {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.shooting-coin {
+    position: absolute;
+    font-size: 5rem;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: coin-direct-shot 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    z-index: 10;
+}
+
+@keyframes coin-direct-shot {
+    0% {
+        bottom: 5%;
+        transform: translateX(-50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    70% {
+        bottom: 32%;
+        transform: translateX(-50%) scale(2) rotate(720deg);
+    }
+    85% {
+        bottom: 35%;
+        transform: translateX(-50%) scale(1.5) rotate(900deg);
+        opacity: 1;
+    }
+    100% {
+        bottom: 35%;
+        transform: translateX(-50%) scale(0.8) rotate(1080deg);
+        opacity: 0;
+    }
+}
+
+.coin-trail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.coin-trail span {
+    position: absolute;
+    font-size: 2.5rem;
+    bottom: 5%;
+    left: 50%;
+    animation: trail-follow 1.2s ease-out forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+}
+
+@keyframes trail-follow {
+    0% {
+        bottom: 5%;
+        opacity: 0;
+        transform: translateX(-50%) scale(0.3);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 35%;
+        opacity: 0;
+        transform: translateX(-50%) scale(1.2);
+    }
+}
+
+.goal-flash {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, transparent 70%);
+    opacity: 0;
+    animation: flash-goal 0.5s ease-out;
+    animation-delay: 0.9s;
+    border-radius: 10px;
+}
+
+@keyframes flash-goal {
+    0%, 100% { opacity: 0; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+}
+
+.happy-player {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: player-appear 0.8s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes player-appear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+.player-face {
+    font-size: 5rem;
+    animation: player-jump 0.6s ease-in-out infinite;
+    animation-delay: 1.5s;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes player-jump {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(-25px) scale(1.15) rotate(10deg); }
+}
+
+.celebration-text {
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    animation: celebration-pulse 0.8s ease-in-out infinite, gradient-move 2s linear infinite;
+    animation-delay: 1.5s, 1.5s;
+}
+
+@keyframes celebration-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes gradient-move {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.coin-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.falling-coin {
+    position: absolute;
+    font-size: 2.5rem;
+    top: -50px;
+    left: calc(20% + (var(--i) * 6%));
+    animation: coin-fall 2s ease-in infinite;
+    animation-delay: calc(var(--i) * 0.15s);
+    opacity: 0;
+}
+
+@keyframes coin-fall {
+    0% {
+        top: -50px;
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation Type 2: Curved Shot - Coin bounces off post into goal */
+.coin-goal-type-2 .net-shake-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: net-explosive-shake 0.8s ease-out;
+    animation-delay: 1.2s;
+}
+
+@keyframes net-explosive-shake {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-8px, -5px); }
+    20% { transform: translate(8px, 5px); }
+    30% { transform: translate(-6px, -3px); }
+    40% { transform: translate(6px, 3px); }
+    50% { transform: translate(-4px, -2px); }
+    60% { transform: translate(4px, 2px); }
+}
+
+.bouncing-coin {
+    position: absolute;
+    font-size: 5rem;
+    bottom: 10%;
+    left: 20%;
+    animation: coin-curved-bounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    z-index: 10;
+}
+
+@keyframes coin-curved-bounce {
+    0% {
+        bottom: 10%;
+        left: 20%;
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    30% {
+        bottom: 35%;
+        left: 35%;
+        transform: scale(1.5) rotate(360deg);
+    }
+    50% {
+        bottom: 32%;
+        left: 47%;
+        transform: scale(1.3) rotate(540deg);
+    }
+    70% {
+        bottom: 36%;
+        left: 52%;
+        transform: scale(2) rotate(720deg);
+    }
+    100% {
+        bottom: 35%;
+        left: 53%;
+        transform: scale(0.7) rotate(1080deg);
+        opacity: 0;
+    }
+}
+
+.bounce-effect {
+    position: absolute;
+    font-size: 4rem;
+    top: 32%;
+    left: 47%;
+    opacity: 0;
+    animation: bounce-impact 0.5s ease-out;
+    animation-delay: 0.75s;
+}
+
+@keyframes bounce-impact {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+.goal-word {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    font-weight: 900;
+    color: #FFD700;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 165, 0, 0.6),
+        3px 3px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: goal-word-appear 1s ease-out forwards;
+    animation-delay: 1.3s;
+    letter-spacing: 5px;
+}
+
+@keyframes goal-word-appear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0) rotate(-45deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.3) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1) rotate(0deg);
+    }
+}
+
+.goal-frame {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 120px;
+}
+
+.goal-post {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.goal-post.left { left: 0; }
+.goal-post.right { right: 0; }
+
+.goal-crossbar {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: white;
+    top: 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.goal-net-shake {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0px,
+        rgba(255, 255, 255, 0.1) 2px,
+        transparent 2px,
+        transparent 12px
+    );
+    animation: net-wave 0.3s ease-in-out 3;
+    animation-delay: 0.5s;
+}
+
+@keyframes net-wave {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.excited-player {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: player-appear 0.8s ease-out forwards;
+    animation-delay: 1.5s;
+}
+
+.player-jumping {
+    font-size: 5.5rem;
+    animation: player-excitement 0.5s ease-in-out infinite;
+    animation-delay: 1.8s;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+}
+
+@keyframes player-excitement {
+    0%, 100% { transform: translateY(0) rotate(-15deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(15deg) scale(1.2); }
+}
+
+.joy-text {
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #FFD700, #FF6B00, #FFD700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: joy-pulse 0.6s ease-in-out infinite, gradient-move 2s linear infinite;
+    animation-delay: 1.8s, 1.8s;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes joy-pulse {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    50% { transform: scale(1.25) rotate(5deg); }
+}
+
+.sparkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 50%;
+    left: 50%;
+    animation: sparkle-burst 1.5s ease-out infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+    opacity: 0;
+}
+
+@keyframes sparkle-burst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(
+            calc(-50% + cos(var(--i) * 45deg) * 150px),
+            calc(-50% + sin(var(--i) * 45deg) * 150px)
+        ) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Animation Type 3: Top Corner Shot - Coin spins into upper corner */
+.coin-goal-type-3 .corner-impact {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    animation: corner-explosion 0.8s ease-out;
+    animation-delay: 1.3s;
+}
+
+.impact-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 2rem;
+    animation: particle-burst 0.8s ease-out forwards;
+    animation-delay: calc(1.3s + var(--angle) * 0.001deg);
+}
+
+@keyframes particle-burst {
+    0% {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(0);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-60px) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes corner-explosion {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.spinning-coin-curved {
+    position: absolute;
+    font-size: 5rem;
+    bottom: 8%;
+    left: 70%;
+    animation: coin-top-corner 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+    z-index: 10;
+}
+
+@keyframes coin-top-corner {
+    0% {
+        bottom: 8%;
+        left: 70%;
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        bottom: 45%;
+        left: 65%;
+        transform: scale(1.3) rotate(360deg);
+    }
+    50% {
+        bottom: 50%;
+        left: 58%;
+        transform: scale(1.8) rotate(720deg);
+    }
+    75% {
+        bottom: 42%;
+        left: 54%;
+        transform: scale(2.2) rotate(1080deg);
+    }
+    100% {
+        bottom: 43%;
+        left: 52%;
+        transform: scale(0.6) rotate(1440deg);
+        opacity: 0;
+    }
+}
+
+.coin-spin-trail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        ellipse at 70% 8%,
+        rgba(255, 215, 0, 0.3) 0%,
+        transparent 20%
+    );
+    animation: trail-fade 1.5s ease-out forwards;
+}
+
+@keyframes trail-fade {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.victorious-player {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: player-appear 0.8s ease-out forwards;
+    animation-delay: 1.6s;
+}
+
+.player-celebrating {
+    font-size: 6rem;
+    animation: player-victory 0.7s ease-in-out infinite;
+    animation-delay: 1.9s;
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+}
+
+@keyframes player-victory {
+    0%, 100% { transform: scale(1) rotate(-20deg); }
+    50% { transform: scale(1.2) rotate(20deg); }
+}
+
+.victory-text {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #FFD700, #FF6B00, #FF1744, #FFD700);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: victory-shine 1s ease-in-out infinite, gradient-move 3s linear infinite;
+    animation-delay: 1.9s, 1.9s;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes victory-shine {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+    }
+    50% { 
+        transform: scale(1.15) rotate(3deg);
+    }
+}
+
+.golden-burst {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+}
+
+.burst-ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 250px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 215, 0, 1) 0%,
+        rgba(255, 165, 0, 0.8) 50%,
+        transparent 100%
+    );
+    transform-origin: top center;
+    transform: translate(-50%, 0) rotate(var(--angle));
+    animation: burst-ray-expand 2s ease-out infinite;
+    opacity: 0;
+    animation-delay: calc(1.5s + (var(--angle) * 0.001deg));
+}
+
+@keyframes burst-ray-expand {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        height: 250px;
+    }
+    100% {
+        opacity: 0;
+        height: 300px;
+        transform: translate(-50%, 0) rotate(calc(var(--angle) + 180deg));
+    }
+}

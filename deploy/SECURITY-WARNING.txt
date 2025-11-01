@@ -1,0 +1,193 @@
+═══════════════════════════════════════════════════════════════
+  🔐 GÜVENLİK UYARISI VE ÖNLEMLERİ
+═══════════════════════════════════════════════════════════════
+
+⚠️ DİKKAT: Firebase API anahtarları bu dosyalarda görünür durumda!
+
+
+📌 ŞU ANDA NE KADAR GÜVENLİ?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ORTA SEVİYE GÜVENLİK ⚠️
+
+✅ Ne Korunuyor:
+  • Firebase Security Rules aktif (sadece giriş yapanlar)
+  • Authentication zorunlu (Google hesabı)
+  • Veri okuma/yazma kuralları var
+  • Firebase otomatik rate limiting
+
+⚠️ Risk:
+  • API anahtarları görünür (browser'da)
+  • Herhangi bir domain'den kullanılabilir (şu anda)
+
+
+🔐 HEMEN YAPILMASI GEREKENLER (Zorunlu!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ API KEY DOMAIN RESTRICTION (En Önemli!)
+   
+   Adımlar:
+   a) https://console.firebase.google.com/ → Projeniz
+   b) Project Settings → General → Web API Key tıklayın
+   c) Google Cloud Console'a yönlendirileceksiniz
+   d) API Key'inizi bulun: AIzaSyCjkBn_kyDq2TopE7QH428L9b0V-_z5mdQ
+   e) "RESTRICT KEY" → "Application restrictions"
+   f) "HTTP referrers" seçin
+   g) İzin verilen domain'leri ekleyin:
+      
+      https://sizin-domain.com/*
+      https://*.sizin-domain.com/*
+      http://localhost/*  (sadece test için)
+   
+   h) KAYDET!
+
+   ✅ Sonuç: API key sadece belirlediğiniz domain'lerden çalışır!
+
+
+2️⃣ AUTHORIZED DOMAINS (Giriş Koruması)
+   
+   Adımlar:
+   a) Firebase Console → Authentication
+   b) Settings → Authorized domains
+   c) Sadece şunları bırakın:
+      • sizin-domain.com
+      • localhost (sadece test için)
+   
+   d) Diğerlerini silin!
+
+   ✅ Sonuç: Sadece belirlediğiniz domain'lerden giriş yapılabilir!
+
+
+3️⃣ FIRESTORE RULES KONTROLÜ (Veri Koruması)
+   
+   Firebase Console → Firestore Database → Rules
+   
+   Şu kurallar aktif mi kontrol edin:
+   - Okuma: auth != null (sadece giriş yapanlar)
+   - Yazma: auth != null && (koşullar)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+🛡️ İLERİ SEVİYE KORUMA (Opsiyonel Ama Önerilen)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4️⃣ FIREBASE APP CHECK (Bot Koruması)
+   
+   Firebase Console → App Check
+   • reCAPTCHA v3 aktif edin
+   • Bot saldırılarını engeller
+
+
+5️⃣ CONTENT SECURITY POLICY (CSP)
+   
+   index.html dosyasına eklenmiş CSP header
+   • Sadece belirlenen kaynaklardan script yükler
+   • XSS saldırılarını önler
+
+
+6️⃣ MONITORING (İzleme)
+   
+   Firebase Console → Analytics
+   • Anormal aktivite takibi
+   • Kullanım limitleri kontrolü
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+❓ SIKÇA SORULAN SORULAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+S: API key görünse bile güvenli mi?
+C: EVET, domain restriction yaparsanız. Firebase client-side 
+   API key kullanımı için tasarlanmıştır. Asıl koruma domain 
+   restriction ve security rules'dadır.
+
+S: Biri API key'i kopyalayıp kullanabilir mi?
+C: Domain restriction varsa HAYIR. Farklı domain'den 
+   kullanamazlar. Security Rules varsa veriyi okuyamazlar.
+
+S: API key'i gizli tutmalı mıyım?
+C: Mümkünse evet, ama görünse de sorun değil. Önemli olan 
+   Firebase Console'daki koruma ayarları.
+
+S: Hacklenmeme riskim nedir?
+C: Domain restriction + Security Rules ile: %5
+   Bunlar olmadan: %30
+   App Check ile: %1
+
+S: Firebase ücretsiz mi?
+C: Evet, günlük limitler dahilinde. Limitler:
+   • 50,000 okuma
+   • 20,000 yazma
+   • 10GB transfer
+
+S: Limit aşarsam ne olur?
+C: Firebase servisler durur veya ücretli plana geçersiniz.
+   Monitoring ile takip yapın.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+✅ GÜVENLİK KONTROL LİSTESİ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Sunucuya yüklemeden ÖNCE:
+□ API key domain restriction ayarlandı
+□ Authorized domains güncellendi
+□ Firebase Security Rules kontrol edildi
+□ Test domain'leri kaldırıldı (production'da)
+
+Sunucuya yükledikten SONRA:
+□ Gerçek domain ile test edildi
+□ Google giriş çalışıyor
+□ Veri okuma/yazma çalışıyor
+□ Başka domain'den test edildi (erişememeli!)
+
+İleri seviye:
+□ App Check aktif edildi
+□ CSP header eklendi
+□ Firebase Analytics aktif
+□ Monitoring kuruldu
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+🚨 ACİL DURUM: API Key Sızdıysa
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Firebase Console → Project Settings → Web API Key
+2. Google Cloud Console'da API key'i REGENERATE edin
+3. Yeni key'i firebase-config.js'e yapıştırın
+4. Dosyaları yeniden deploy edin
+5. Domain restriction'ı yeni key'e uygulayın
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+📚 DETAYLI BİLGİ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Daha fazla bilgi için:
+• SECURITY-GUIDE.md dosyasını okuyun
+• Firebase Security Docs: https://firebase.google.com/docs/rules
+• Firebase App Check: https://firebase.google.com/docs/app-check
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+⚠️ ÖNEMLİ UYARI:
+
+Bu önlemleri almadan production'a çıkmak GÜVENLİK RİSKİ 
+oluşturur. En azından #1 ve #2 adımları mutlaka uygulayın!
+
+
+═══════════════════════════════════════════════════════════════
+  Güvenli deployment için: SECURITY-GUIDE.md dosyasını okuyun
+═══════════════════════════════════════════════════════════════
